@@ -30,7 +30,7 @@
   - `Java Enterprise Edition(EE)` Large-Scale applications for Servers, built on top of Java SE, EX: E-commerce website.
   - `Java Micro Edition(ME)` Applicaion for Resource-Constrained Devices. Uses subset of Java SE.
   
-  #### Day 03
+###### Day 03
   
 - `Variables` is like a container used to store values. A `Variable` is a named storage location in memory, stored Values can be changed during Program Execution.
    it has `Type` that determines what kind of Values they can store. An `Identifier`(name) that is used to access the values stored in Variable.
@@ -42,7 +42,7 @@
   - class/static Variables: declared with the `static` keyword in a class but outside any methods, constructors or blocks.
 -`static variables`: There would be one copy of each class variable per class, regardless of how many objects are created from it.
 
-#### Day 04
+###### Day 04
 
 - there are no byte or short literals but only `int` and `long` literals.  
  We can make a literal `long` by appending `L` or `l`.
@@ -58,12 +58,12 @@ BigDeciaml b = new BigDeciaml("0.3");
 
 - `characters` it can be assigned with unique value (\u0042) i.e., `code unit`. we can find different characters in `unicode-table`.
 
-#### Day 05
+###### Day 05
 
 - `Type Casting`: Assigns variables or literals of one type to another type 
   - implicit casting: smaller to larger data type i.e., widening conversion. Integer to Floating-point is implicit.
   - explicit casting: larger to smaller data type i.e., narrowing conversion mostly characters to different data type comes under explicit.
-- we can represent integers and characters using different ways i.e., `intHex`,`intBinary`,`intOctal in hexadeciaml, binary, octal. we can also use `intChar`.
+- we can represent integers and characters using different ways i.e., `intHex`,`intBinary`,`intOctal` in hexadeciaml, binary, octal. we can also use `intChar`.
 
 ```
 int intHex = 0x0043;
@@ -82,7 +82,7 @@ System.out.println("last number:" + numbers[5]);
 ```
 
 
-#### Day 06
+###### Day 06
 
 
 - like declaration of variables of other types, an `array` declaration has two components: the array's type and array's name. An `array's type` is written as `type[]`,
