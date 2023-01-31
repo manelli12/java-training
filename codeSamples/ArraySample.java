@@ -8,20 +8,29 @@ class ArrayExample{
 	System.out.println("fail:" + grade[2]);
 	System.out.println("highest grade:" + grade[4]);
 	
+	int[] A = {1,2,3,4,5};
+	int[] B = {6,7,8,9};
+	System.arraycopy(A,0,B,1,3);
+	System.out.println("B after copying:" + B);
+	
+	String[] names= {"ram","lakshman","bharath","ravan"};
+	System.arraycopy(names,0,names,1,3);
+	System.out.println("names:" + names);
+	
+	String[] copyFrom = {
+            "Affogato", "Americano", "Cappuccino", "Corretto", "Cortado",   
+            "Doppio", "Espresso", "Frappucino", "Freddo", "Lungo", "Macchiato",      
+            "Marocchino", "Ristretto" };
+        
+        String[] copyTo = java.util.Arrays.copyOfRange(copyFrom, 2, 9);        
+        for (String coffee : copyTo) {
+            System.out.print(coffee + " ");           
+        } 
 	
 	}
 	
 	public static void main(String args[]){
 			arrays();
-			Employee[] employees = {new Employee(), new Employee(), new Employee()};
-	/*employees[0] = new Employee();
-	employees[1] = new Employee();
-	employees[2] = new Employee();*/
-	employees[0].name = "misra";
-	employees[1].name = "akela";
-	employees[2].name = "vignesh";
-	System.out.println("Employee 1: " + employees[0].name);
-	System.out.println("Employee 2: " + employees[1].name);
-	System.out.println("Employee 3: " + employees[2].name);
+			
 	}
 	}
