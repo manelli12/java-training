@@ -13,6 +13,7 @@
 - `JVM Instance` can run only one Java Application.
   - if we want to run another program then we can execute it separetly.
   
+  
 ###### Day 02
 
 - `Git` learned about git and installed git, created `git-hub` account
@@ -30,6 +31,7 @@
   - `Java Enterprise Edition(EE)` Large-Scale applications for Servers, built on top of Java SE, EX: E-commerce website.
   - `Java Micro Edition(ME)` Applicaion for Resource-Constrained Devices. Uses subset of Java SE.
   
+  
 ###### Day 03
   
 - `Variables` is like a container used to store values. A `Variable` is a named storage location in memory, stored Values can be changed during Program Execution.
@@ -41,6 +43,7 @@
   - Instance Variables: declared in class but outside any methods, constructors or blocks.
   - class/static Variables: declared with the `static` keyword in a class but outside any methods, constructors or blocks.
 -`static variables`: There would be one copy of each class variable per class, regardless of how many objects are created from it.
+
 
 ###### Day 04
 
@@ -57,6 +60,7 @@ BigDeciaml b = new BigDeciaml("0.3");
 ```
 
 - `characters` it can be assigned with unique value (\u0042) i.e., `code unit`. we can find different characters in `unicode-table`.
+
 
 ###### Day 05
 
@@ -84,7 +88,6 @@ System.out.println("last number:" + numbers[5]);
 
 ###### Day 06
 
-
 - like declaration of variables of other types, an `array` declaration has two components: the array's type and array's name. An `array's type` is written as `type[]`,
   where `type` is the data type of the contained elements, brackets indicate that varaibale holds an `array`. Size of the array is not part of it's `type`.
   an array name can be anything we want. 
@@ -110,6 +113,38 @@ String[] destination = java.util.Arrays.copyOfRange(copyFrom,0,1);
 - Note that the second parameter of the `copyOfRange` method is the initial index of the range to be copied, inclusively, 
   while the third parameter is the final index of the range to be copied, exclusively.
 - `Java SE` provides several methods for performing array manipulations such as copying, sorting and searching arrays.
+
+
+######Day 07
+
+- `2D arrays` are stored as arrays of arrays. Therefore, the way 2D arrays are declared is similar 1D array objects. 2D arrays are declared by defining a data type followed by two sets of square brackets.
+- `initializer lists` can be used to quickly give initial values to `2D arrays`. This can be done in two different ways.
+  - If the array has not been declared yet, a new array can be declared and initialized in the same step using curly brackets.
+  - If the array has already been declared, the new keyword along with the data type must be used in order to use an initializer list.
+  
+  ```
+  //declaring and initializing at the same time
+  int[][] intValues = {{1,2,3},{9,8,7},{4,5,6}};
+  
+  //declaring and initializing separetly
+  int[][] intNumbers;
+  intNumbers = new int[][] {{2,4,5},{3,6,7},{1,8,9}};
+  ```
+- 2D arrays need not be rectangular, each row can be of different length.
+
+```
+int[][] Values;
+Values = new int[2][]
+Values[0] = new int[2];
+Values[1] = new int[6];
+```
+- `strings` are objects of the class `java.lang.String`. They are used to represent sequences of characters and are `immutable`, meaning their values cannot be changed once created.
+- Java provides many `built-in methods` to manipulate strings, including methods for concatenation, substring extraction, searching, and pattern matching.
+- Strings are commonly used in Java for representing text-based information, such as names, addresses, and other data.
+- Java also provides the `StringBuilder` or `StringBuffer` class, which allows for the creation of `mutable strings` and provides efficient methods for concatenating strings.
+- for `String`, each time a string is concatenated, a new object is created and it's the main reason why it's not recommended for cases where a lot of string manipulation is needed, 
+instead using a `StringBuilder` or `StringBuffer` will be more efficient.
+- `methods` define behaviour of an object. By using `methods` we can avoid `code duplication` and we can `re-use` software .
     
 
 
