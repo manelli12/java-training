@@ -115,7 +115,7 @@ String[] destination = java.util.Arrays.copyOfRange(copyFrom,0,1);
 - `Java SE` provides several methods for performing array manipulations such as copying, sorting and searching arrays.
 
 
-######Day 07
+###### Day 07
 
 - `2D arrays` are stored as arrays of arrays. Therefore, the way 2D arrays are declared is similar 1D array objects. 2D arrays are declared by defining a data type followed by two sets of square brackets.
 - `initializer lists` can be used to quickly give initial values to `2D arrays`. This can be done in two different ways.
