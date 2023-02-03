@@ -155,7 +155,7 @@ a `arrays`, is valid only in `declaration` statements, but we cannot use it when
 int[] list ={1,2,3};
 search({1,2,3}, 2); //it will not invoke compilation error
 search(list,2); //this is correct way of invoking
-search(new int[]{1,2,,3}, 2); //this way can also be used to invoke
+search(new int[]{1,2,3}, 2); //this way can also be used to invoke
 ```
 - `Static methods` are class level methods. That is unlike `instance` methods they do not deal with object state.
 - `Static` methods do not have access to either `instance variables` or `methods` with in the same class. i.e., from a Static method , if you directly try to access an instance variable declared 
