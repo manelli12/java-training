@@ -26,11 +26,18 @@ class ArrayExample{
         for (String coffee : copyTo) {
             System.out.print(coffee + " ");           
         } 
+	 
 	
 	}
+	static boolean search(int[] list, int key){
+		return true;
+	}	
 	
 	public static void main(String args[]){
 			arrays();
+			int[] list = {1, 2};
+			list = {2,3,4};
+			search(new int[]{1,2} , 2 );
 			
 	}
 	}

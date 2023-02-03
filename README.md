@@ -147,6 +147,22 @@ instead using a `StringBuilder` or `StringBuffer` will be more efficient.
 - `methods` define behaviour of an object. By using `methods` we can avoid `code duplication` and we can `re-use` software .
     
 
+###### Day 08
+
+- let's say if we want to pass an `array` list in a function it gives `illegal start of expression` its not going to work. That's because this kind of simplest notation which we have for creating
+a `arrays`, is valid only in `declaration` statements, but we cannot use it when `invoking` a particular `method`.
+```java
+int[] list ={1,2,3};
+search({1,2,3}, 2); //it will not invoke compilation error
+search(list,2); //this is correct way of invoking
+search(new int[]{1,2,,3}, 2); //this way can also be used to invoke
+```
+- `Static methods` are class level methods. That is unlike `instance` methods they do not deal with object state.
+- `Static` methods do not have access to either `instance variables` or `methods` with in the same class. i.e., from a Static method , if you directly try to access an instance variable declared 
+within same class, then we'll get a compiler error. Similary we can't invoke instance mrthod within same class.
+- we can use `static methods` or `variables` in `instance methods`.
+- `static` stuff is `global`, which is accessible across all of the objects. So from `instance methods` you can access `static` variables or methods.
+
 
 
 
