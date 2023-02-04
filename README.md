@@ -122,7 +122,7 @@ String[] destination = java.util.Arrays.copyOfRange(copyFrom,0,1);
   - If the array has not been declared yet, a new array can be declared and initialized in the same step using curly brackets.
   - If the array has already been declared, the new keyword along with the data type must be used in order to use an initializer list.
   
-  ```
+  ```java
   //declaring and initializing at the same time
   int[][] intValues = {{1,2,3},{9,8,7},{4,5,6}};
   
