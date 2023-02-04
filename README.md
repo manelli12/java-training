@@ -69,7 +69,7 @@ BigDeciaml b = new BigDeciaml("0.3");
   - explicit casting: larger to smaller data type i.e., narrowing conversion mostly characters to different data type comes under explicit.
 - we can represent integers and characters using different ways i.e., `intHex`,`intBinary`,`intOctal` in hexadeciaml, binary, octal. we can also use `intChar`.
 
-```
+```java
 int intHex = 0x0043;
 int intBinary = 0b0100_0001;
 int intOctal = 0101;
@@ -80,7 +80,7 @@ int intchar = 'B' ;
 - `statements`: Expression or Assignment statements should not fall under class level it will show an compilation error. only declaration statements can be at class level.
 - `Arrays`: in Java are useful for storing multiple values of the data type, and they allow you to access those values using their `unique index`.
 
-```Java
+```java
 int[] numbers = {1,7,8,5,7,6};
 System.out.println("last number:" + numbers[5]);
 ```
@@ -101,13 +101,13 @@ System.out.println("last number:" + numbers[5]);
   - dstPos: the starting position in the destination array
   - length: number of array elements to copy.
 
-```
+```java
 String[] names= {"ram","lakshman","bharath","ravan"};
 System.arraycopy(names,0,names,1,3);  
 ```
 
 - `copyOfRange` method does not require you to create the destination array before calling the method, because the destination array is returned by the method.
-```
+```java
 String[] destination = java.util.Arrays.copyOfRange(copyFrom,0,1);
 ```
 - Note that the second parameter of the `copyOfRange` method is the initial index of the range to be copied, inclusively, 
@@ -132,7 +132,7 @@ String[] destination = java.util.Arrays.copyOfRange(copyFrom,0,1);
   ```
 - 2D arrays need not be rectangular, each row can be of different length.
 
-```
+```java
 int[][] Values;
 Values = new int[2][]
 Values[0] = new int[2];
@@ -164,5 +164,48 @@ within same class, then we'll get a compiler error. Similary we can't invoke ins
 - `static` stuff is `global`, which is accessible across all of the objects. So from `instance methods` you can access `static` variables or methods.
 
 
+###### Day 09
+
+- we use `pass by value` only in java. There are two ways to pass the data.
+  - `primitive` argument i.e., if we can pass directly the type and variable name as a parameter, here the argument variable value is copied as a parameter. 
+  - `object reference` argument i.e., we pass the object reference as a parameter, here only the `memory address` of argument is copied to the parameter.
+  - *note* if the `object reference` is passed as value,if the object is modified inside the method, then the modification is reflected in the `calling environment`, which does not happend with `primitive` argument.
+  - This is only because here we are dealing with an object i.e., referenced from both `calling environment` and also from within the `method`.
+  
+```java
+void updateId(Employee e1){
+	e1 = new Employee(); 
+	e1.id = 4000;
+}  
+Employee e = new Employee();
+	e.id = 3000;
+	updateId(s);
+```	
+- by creating new object we can avoid reflection in  the calling environment even when the object is modified inside the method.
+- `Method binding` refers to the process of linking a method call to the method body, at runtime, in object-oriented programming. There are two types of method binding:
+  - `Static binding`(early): The method call is bound to the method body at `compile time`, meaning the binding is determined by the `type` of the object being referred to and not the `object's value`.
+  - `Dynamic binding`(late): The method call is bound to the method body at `runtime`, meaning the binding is determined by the `actual object` being referred to and its `value`, rather than its type.
+- `varargs` is a short form for *variable arguments*. That allows a method to accept an `indefinite number` of arguments of the same type. This means that the method can take any number of arguments of the same data type, 
+rather than having to specify a fixed number of parameters. 
+- The syntax for declaring a `varargs` method is to use an (three dots: "...") after the type of the last parameter in the method signature, like so:
+
+```java
+void method(int... args){}
+void method(boolean flag, int... args){} 
+//this allows us to call the method with zero or more arguments
+method(true);
+method(true,new int[]{1,2,3}) //using array
+method(true,1,2,3) //comma-separated arguments
+```
+- restriction of `varargs` it should be last parameter and we can't have more than one varargs parameter.
+- `constructors` are similar to methods but the name of it should be similar with the `className`. The main purpose is to create the objects and initialize the state of the objects.
+- we can pass the parameters in constructor. When the class defination doesn't have a constructor, when we compile the class compiler inserts a constructor into the bytecode.
+- if class includes the constructor in that case, the compiler will not insert the `default constructor`.
+
+
+
+	
+	
+	
 
 
