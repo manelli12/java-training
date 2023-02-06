@@ -4,7 +4,7 @@ class StaticTest{
 		System.out.println(i);
 
 	}
-	static int sum(int x, int y){
+	static int sum(int x, int y){ 
 		return x+y; 
 	}
 
@@ -20,4 +20,4 @@ class StaticTest{
 		
 		System.out.println(StaticTest.sum(5,5));
 	}
-}	
+}	 
