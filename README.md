@@ -203,9 +203,17 @@ method(true,1,2,3) //comma-separated arguments
 - if class includes the constructor in that case, the compiler will not insert the `default constructor`.
 
 
+###### Day 10
+- main purpose of the `constructor` is to initialize the state of an object. It does'nt have a return type, It can have varargs parameter.
+- local variable always shadows the instance variable if they represent with same name. so we use `this` keyword refers to the current instance of the class. It is used to refer to the members of the current object from within the object's methods or constructors.
+- `this` is actually an `instance variable` and it is allowing us to access instance variables and also instance methods. So this cannot be used within a `static method`.	
+- `this()` is used to call an overloaded constructor, must be first statement in a constructor.
+- we can't have more than one `this()` per constructor.	
 
-	
-	
+
+
+
+
 	
 
 
