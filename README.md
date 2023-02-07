@@ -204,6 +204,7 @@ method(true,1,2,3) //comma-separated arguments
 
 
 ###### Day 10
+
 - main purpose of the `constructor` is to initialize the state of an object. It does'nt have a return type, It can have varargs parameter.
 - local variable always shadows the instance variable if they represent with same name. so we use `this` keyword refers to the current instance of the class. It is used to refer to the members of the current object from within the object's methods or constructors.
 - `this` is actually an `instance variable` and it is allowing us to access instance variables and also instance methods. So this cannot be used within a `static method`.	
@@ -211,9 +212,33 @@ method(true,1,2,3) //comma-separated arguments
 - we can't have more than one `this()` per constructor.	
 
 
+###### Day 11
 
+- `Arithmetic` operator applies to only primitive numberic types.
+- Shorthand operators : 
+  - `pre & post` increment/decrement: applies to addition & subtraction i.e (++i, --i, i++, i--)
+  - `compound Arithmetic Assignment operators`: applies to all arithmetic operations (+=,-=,*=,/=,%=).
+- `operand promotion` : operands smaller than int are promoted to int.
+- if both operands are int,long,float or double then operations are carried in that type & evaluated to a value of that type.
 
-
+```java  
+System.out.println(1/2); //it will give 0 insted of 0.5
+```
+- `mixed-type operations`: if operands belong to different types, then smaller type is promoted to larger type.
+- *order of promotion*: int -> long -> float -> double.
+- *Type* of final result will be of *largest* data type
+```java
+char c = '2';
+char char1 = 50; //both are same
+```
+- if we assign integer value to char then it will cast implicitly and give corresponding character value.
+- we cannot use comparision operator on boolean 
+```java
+boolean a = true;
+System.out.println("a <= true: " + (a <= true));//error bad operand types for binary operator '<='
+System.out.println("a == true: " + (a == true)); //true
+System.out.println("a != true: " + (a != true)); //false
+```
 	
 
 
