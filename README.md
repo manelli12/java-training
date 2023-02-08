@@ -241,4 +241,37 @@ System.out.println("a != true: " + (a != true)); //false
 ```
 	
 
+###### Day 12
 
+- All of the `logical operators`(&&,||,!) require the data type of boolean.
+```java
+if(age > 25 && salary){ //here salary is an int type so it gives an compilation error
+  body...
+}
+if(age >25 && salary > 80000){ //it got to be boolean expression
+  ...
+}
+```
+- `comparator operator` has higher precedence then `&&` and `||` logical operators .
+- *order of precedence*: !(not operator) > arithmetic > comparison > && , ||
+- `operator precedence` of *logical operators* helps with only grouping operations. Not order of execution.
+- `Bitwise operators':
+  - *Bitwise AND*(&): Returns 1 only if both the input bits are 1.
+  - *Bitwise OR*(|): Returns 1 if one of the input bits is 1.
+  - *Bitwise XOR*(^): Returns 1 only if one of the input bits is 1,*but not both*
+  - *Bitwise NOT*(~): inverts bits i.e., if x=1 it gives ~x->-2
+- non short circuit operators always check for both operands
+- *bitwise operators* can only be applied on integers or boolean operations.
+- Among bitwise, &, |, and ^ can be used with boolean operands. Bitwise NOT (~) will not even compile with boolean. If we need such a behavior, then we would use logical NOT (!) operator.  
+- Also, strictly speaking to be consistent with the *Java Language Specification* (JLS), &, | and ^ when applied on `boolean operands` are referred to as *logical operators* and not *bitwise*.
+- *left shift operator*(<<): Left shifts left operand by n bits specified on right
+  - it is like multiplication by powers of 2
+- *unsigned right-shift operator*(>>>): Right shifts left operand by n bits specified on right
+  - same as division by powers of 2
+- `&&` can be used to prevent `NullPointerException`.  
+```java
+if(obj != null && obj.id == 10)
+    ...
+```	
+	
+  
