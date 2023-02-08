@@ -9,6 +9,7 @@ class Demo{
 		DemoStudent student3 = new DemoStudent(3, "sanji", "java");
 		  System.out.println("Name of student3: " + student3.name);
 		  
+		//swapping  
 		DemoStudent[] students = {student1, student2, student3};
 		
 		DemoStudent temp = students[0];

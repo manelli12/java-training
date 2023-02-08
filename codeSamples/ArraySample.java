@@ -37,7 +37,7 @@ class ArrayExample{
 			arrays();
 			int[] list = {1, 2};
 			
-			search({1,2} , 2 );
+			search(list , 2 );
 			
 	}
 	}
