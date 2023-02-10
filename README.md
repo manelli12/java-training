@@ -273,5 +273,20 @@ if(age >25 && salary > 80000){ //it got to be boolean expression
 if(obj != null && obj.id == 10)
     ...
 ```	
+
+
+###### Day 13
+
+- `switch` can take an enum or an `integer (byte, short, char, int)` expression or a corresponding wrapper class. At runtime when the variable is evaluated, the primitive value will be unwrapped and will be compared with the case labels.
+- switch expression can also be a `String` (from Java 7 onwards).
+- as we can have object references as switch expression, there is a possibility of it evaluating to null leading to a NullPointerException.
+- the value of the case label must be unique, non-null, within the range of the data type of the switch expression and should be known at compile time itself.
+- `switch` is preferred over *if statement* becuase in if statement we have to check every statement one after another, but in switch case we jump directly to the corresponding case block. 
+- a `ternary` expression can't be used as a standalone statement.
+- true & false expressions in a ternary operation cannot be an invocation to a method with void as return type. 
+```java
+int result = (x > y)? x : y;
+ (x > y)? x : y; //error
+```
 	
   
