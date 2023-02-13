@@ -285,8 +285,31 @@ if(obj != null && obj.id == 10)
 - a `ternary` expression can't be used as a standalone statement.
 - true & false expressions in a ternary operation cannot be an invocation to a method with void as return type. 
 ```java
-int result = (x > y)? x : y;
+ int result = (x > y)? x : y;
  (x > y)? x : y; //error
 ```
+- ternary expression cannot be used as an expression statement.
+
+
+###### Day 14
+
+- *infinite loop* can be achived by `while loop` .
+```java
+long z = 0;
+      while (true) {
+        System.out.println(z);
+        z++;
+```
+- break statement exits immediately enclosing switch or loop but it cant we used for *if statement*.
+- we can use break label for if block .
+```java 
+label:
+ if(true){
+  break label;
+  }
+```  
+- we also have *continue* statement which will skip the current iteration and continues on to the next iteration.
+
+
 	
   
