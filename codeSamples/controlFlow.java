@@ -36,6 +36,14 @@ class controlFlow{
   }
   }
   
+  static void whileStatement(){
+    while(true){
+	 if(a>b){
+	  
+	 }
+	}
+  }
+  
   
  public static void main(String args[]){
     ifStatements();

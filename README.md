@@ -309,7 +309,71 @@ label:
   }
 ```  
 - we also have *continue* statement which will skip the current iteration and continues on to the next iteration.
+- the method that invokes itself is also referred to as a `recursive` method, and we refer to such an invocation call as a recursive call.
+- when a method invokes itself, it essentially means that the method is actually executing again. And during that execution, it may make another recursive call. And so the method would execute once again.
+- So this process of re invoking itself and the method executing again can happen for a certain number of times until a condition is met in one of the executions of the method.
 
 
-	
-  
+###### Day 15
+
+- if we want to access a *class* from another package then it should have the `public` access modifier, not required if we are accessing it from the same package.
+- there are four access modifiers:
+  - private: only accessible within the class and cannot be accessed outside of it.
+  - default: accessible inside package
+  - protected: inside package accessible within the class and its subclasses.
+  - public: accessible from anywhere in the program, both within the class and outside of it.
+- `Package names`: Package names should be all lowercase and use reverse domain name notation. For example: "com.example.mypackage".	
+- an object of a class can access private members of another object of the same class. If something is declared private, it means it is private to its class, but not among
+the objects of its class.
+- we can read data from keyboard using `Scanner` we have different methods for different data types.
+
+```java
+import.java.util.*;
+Scanner sc = new Scanner(System.in);
+int x = sc.nextInt();
+System.out.println(x);
+```
+- for using Scanner we need to import util package.
+
+
+###### Day 16  
+
+
+- the *string pool* is a memory area in the heap where the JVM stores all string literals. When we create a string literal, the JVM first checks the string pool to see 
+if an identical string already exists. If it does, the JVM simply returns a reference to that string, rather than creating a new String object. 
+This helps to conserve memory, as the JVM only needs to store one copy of each unique string value in memory.
+- a string literal is also a string object. Below are a few ways to initialize a String object.
+```java 
+String s = "Java";
+
+String s1 = new String();
+String s2 = new string(s);
+
+char[] c ={65, 66, 67, 68};
+String s3 = new String(c);
+```
+- when we create a string using the `new` keyword, a new String object is always created in the heap, separate from the string pool. The contents of this String object can be the 
+same as a string in the pool, but it is still a separate object in memory, with its own memory address.
+- If you are saying ,`str1==str2` , then it will check the references means, *addresses of the objects* that are different.
+- And if you say `str1.equals(str2)`, it will check the *contents of the string*. So these two are different.
+- The `valueOf()` method is a static method in the String class in Java that is used to convert different types of values (such as integers, doubles, booleans, and characters) into a String representation.
+- For example, to convert an integer to a String, you can use the valueOf() method as follows:
+```java
+int myInt = 455;
+String myString = String.valueOf(myInt);
+```
+- This will create a `String` object with the value "455".
+- Similarly, we can use the `valueOf()` method to convert other types of values to String objects, like:
+```java
+double myDouble = 3.141;
+String str1 = String.valueOf(myDouble);
+
+boolean myBoolean = true;
+String str2 = String.valueOf(myBoolean);
+
+char myChar = 'a';
+String str3 = String.valueOf(myChar);
+
+- In each case, the `valueOf()` method is used to convert the original value to a `String` representation that can be used in various ways within a program.
+```
+
