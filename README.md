@@ -374,6 +374,6 @@ String str2 = String.valueOf(myBoolean);
 char myChar = 'a';
 String str3 = String.valueOf(myChar);
 
-- In each case, the `valueOf()` method is used to convert the original value to a `String` representation that can be used in various ways within a program.
+In each case, the `valueOf()` method is used to convert the original value to a `String` representation that can be used in various ways within a program.
 ```
 
