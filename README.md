@@ -300,7 +300,7 @@ long z = 0;
         System.out.println(z);
         z++;
 ```
-- break statement exits immediately enclosing switch or loop but it cant we used for *if statement*.
+- break statement exits immediately enclosing switch or loop but it can't be used for *if statement*.
 - we can use break label for if block .
 ```java 
 label:
@@ -318,10 +318,10 @@ label:
 
 - if we want to access a *class* from another package then it should have the `public` access modifier, not required if we are accessing it from the same package.
 - there are four access modifiers:
-  - private: only accessible within the class and cannot be accessed outside of it.
-  - default: accessible inside package
-  - protected: inside package accessible within the class and its subclasses.
-  - public: accessible from anywhere in the program, both within the class and outside of it.
+  - *private*: only accessible within the class and cannot be accessed outside of it.
+  - *default*: accessible inside package
+  - *protected*: inside package accessible within the class and its subclasses.
+  - *public*: accessible from anywhere in the program, both within the class and outside of it.
 - `Package names`: Package names should be all lowercase and use reverse domain name notation. For example: "com.example.mypackage".	
 - an object of a class can access private members of another object of the same class. If something is declared private, it means it is private to its class, but not among
 the objects of its class.
@@ -374,6 +374,27 @@ String str2 = String.valueOf(myBoolean);
 char myChar = 'a';
 String str3 = String.valueOf(myChar);
 
-In each case, the `valueOf()` method is used to convert the original value to a `String` representation that can be used in various ways within a program.
+/*
+ In each case, the `valueOf()` method is used to convert the original value
+ to a `String` representation that can be used in various ways within a program.
+ */
 ```
 
+
+###### Day 17
+
+- Java provides a way to share `String objects` that have the *same content* by using the `intern()` method.
+- When you call the `intern()` method on a `String object`, Java checks if a String object with the same content is already stored in the pool of `interned String objects`, which is a special area of the heap 
+where String objects that are interned are stored. 
+- If a String object with the same content is found, the intern() method returns that object instead of creating a new object in the heap.
+- Example of intern() method:
+```java
+String s1 = "Hello, world!";
+String s2 = "Hello, world!".intern();
+String s3 = new String("Hello, world!");
+System.out.println(s1==s3.intern()); //true
+```
+- str2 has been interned using the `intern()` method. When the intern() method is called on "Hello, world!", Java checks if a String object with the same content is already in the pool of `interned String objects`. 
+Since "Hello, world!" is a commonly used String in Java programs, it's very likely that it's already in the pool of interned String objects. In this case, the intern() method returns the String object from the pool instead of creating a new object in the heap. 
+As a result, str1 and str2 reference the same object in the heap.
+- string object is immutable, a string reference however can be re-assigned as manytimes as we want.
