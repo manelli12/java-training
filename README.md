@@ -398,3 +398,40 @@ System.out.println(s1==s3.intern()); //true
 Since "Hello, world!" is a commonly used String in Java programs, it's very likely that it's already in the pool of interned String objects. In this case, the intern() method returns the String object from the pool instead of creating a new object in the heap. 
 As a result, str1 and str2 reference the same object in the heap.
 - string object is immutable, a string reference however can be re-assigned as manytimes as we want.
+
+
+###### Day 18
+
+- classes can only have `public` or `default` access specifiers. 
+- all the methods in java.lang.Math are static.
+- the Math class is non-instantiable, which means we can't create it's objects. This can be achieved by making the default constructor `private`.
+- there are two types of initializers, static initializer and instance initializer.
+- `static` initializers are used to initialize the static variables. A static initializer is declared using the static keyword, and it is executed only once when the class is loaded.
+- static initializers are useful when we need to initialize `static` variables with a value that can't be computed at compile time.
+we can't reference `instance` variables from `static` intializers.
+```java
+public class MyClass {
+    static {
+        // static initialization code here
+    }
+}
+```
+- instance initializers are used to initialize instance variables. The syntax is similar to static initializer but without the static keyword.
+- a constructor can also be used to initialize instance variables but instance initializers are helpful if we want to share a block of code between multiple constructors i.e., Java compiler copies initializer blocks into the beginning of every constructor.
+- we can reference static variables from instance initializers.
+- a `final` variable is a variable that cannot be reassigned once it has been initialized. Once a final variable is assigned a value, that value cannot be changed.
+```java
+final int a = 5;
+a = 10; // This will result in a compiler error
+```
+- `final` variables are often used to declare `constants` in Java. Here is an example:
+```java
+final double PI = 3.14159;
+
+//'PI' is a constant that cannot be changed once it has been initialized.
+```
+- final variables can be declared as class-level variables, instance variables, or local variables. When a final variable is declared as a class-level or instance variable, it must be initialized in the declaration or in the constructor of the class. 
+When a final variable is declared as a local variable, it must be initialized before it is used in the code.
+- `constant` variables must be initialized in the same line of declaration statement.
+
+
