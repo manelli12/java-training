@@ -435,3 +435,54 @@ When a final variable is declared as a local variable, it must be initialized be
 - `constant` variables must be initialized in the same line of declaration statement.
 
 
+###### Day 19
+
+- documentation comments use `/** ...*/` uses something similar to block course but here it uses two asterisks . they are generally referred to as javadoc comments.
+- prior to Java 5 one had to manually create a boxed primitive by invoking either it's constructor or by `valueOf` method. But in Java 5 a feature called `auto-boxing` was introduced, meaning the compiler can automatically box a primitive if needed.
+```java
+// auto-boxing
+Integer i = 9;  // Integer i = new Integer(9);
+// auto-unboxing
+int j = i;      // int j = i.intValue();
+```
+- auto-boxing can also be seen in method invocation
+```java
+//auto-boxing
+void go(Integer boxed) {}
+go(55);               // compiler will wrap it before invocation
+//auto-unboxing
+void go(int i) {}
+go(new Integer(65));  // compiler will unwrap it before invocation
+```
+- it is also possible to directly perform arithmetic operations on boxed primitives.
+```java
+Integer i = 5;
+i++;
+int j = 4 * i;
+```
+- two box primitives can have same value but different identities.
+- `box primitives` which are object references can work with comparision operators.
+- `<`, `>`, `>=` and `<=` on boxed primitives will lead to `auto-unboxing` but in case of `==` and `!=` the *addresses* will be compared.
+
+
+###### Day 20
+
+- sub class can access members of super class, but super class can never access members of subclass.
+- inheriting of members applies to only non-private members of superclass.
+- `inheritance` helps in code reuse, code duplication is removed.
+- `subclasses` are specialized versions of `super classes` i.e., they can do whatever their super classes do and in addition they can also do their own features.
+- a class would inherit members from all its super classes in the hierarchy, i.e., inheriting members is not restricted to only its direct superclass.
+- `extends` keyword is used in the class declaration to build an inheritance relationship.
+- class can extend from *only one* class.
+```java
+class A{} 			//super class
+class B extends A{}	//sub classes
+class C extends B{}
+class E extends A{}
+class E extends B{} //error
+```
+- `protected` members can be accessed by any subclass and the subclass need not be in the same package.
+- whereas `default` members can be accessed by subclasses that are in the same *package*.
+
+
+-
