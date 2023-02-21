@@ -473,7 +473,7 @@ int j = 4 * i;
 - `subclasses` are specialized versions of `super classes` i.e., they can do whatever their super classes do and in addition they can also do their own features.
 - a class would inherit members from all its super classes in the hierarchy, i.e., inheriting members is not restricted to only its direct superclass.
 - `extends` keyword is used in the class declaration to build an inheritance relationship.
-- class can extend from *only one* class.
+- class can extend from `only one` class.
 ```java
 class A{} 			//super class
 class B extends A{}	//sub classes
@@ -485,4 +485,52 @@ class E extends B{} //error
 - whereas `default` members can be accessed by subclasses that are in the same *package*.
 
 
--
+###### Day 21
+
+- is-a test is a fundamental test that can be used to check inheritance relationship. If it is failing then inheritance relation should not be applied.
+- with `polymorphism`, a supertype can be assigned any of it's subtypes. It means that the type of object reference and the actual object referenced can be different,
+the type of object reference has to be a supertype of the actual object that is being referenced.
+- a supertype is defining the common protocol for all its subtypes.
+- compiler uses reference type to decide on whether a method can be invoked on an object reference or not, so it doesn't use the object type, but it uses the reference type to make decision.
+```java
+/*ref type*/  /*obj type*/
+User user = new Editor();
+user.approveReview()	//compiler error as User doesn't have this method
+```
+- but at runtime, JVM uses the actual object type to decide on which method is invoked. It invokes the most specific version of the method in the inheritance tree, 
+starting from the object type and moving upwards in the tree.
+
+
+###### Day 22
+
+- once implicit casting on an inherited class is done, we can only invoke those subclass methods which are also defined in the super-class but sub-class specific methods become invalid. 
+To address this we need to use explicit casting.
+```java
+Staff s = new Editor();
+s.approveReview();             // invalid
+((Editor) s).approveReview();  // valid
+```
+-`instanceof` operator is used to check whether an object reference is indeed an instance of the class. Note that it is the object type, but not the reference type that matters. 
+Also the object referenced by the variable can be a subclass of the class specified on the right side, it doesn't have to be a direct instance.
+```java
+User u = new User();
+Staff s = new Staff();
+User us = new Staff();
+
+System.out.println(u instanceof User);    // true
+System.out.println(u instanceof Staff);   // false
+System.out.println(s instanceof Staff);   // true
+System.out.println(s instanceof User);    // true
+System.out.println(us instanceof User);   // true
+System.out.println(us instanceof Staff);  // true
+```
+- `Type safety` is the extent to which a programming language prevents something `type errors`. One example could be invoking 
+non existing method on an object.
+```java
+staff.approveReview()	//method doesn't include in staff class
+```
+- `generics` is all about type safety at compile time, before generics many of the errors were only caught at runtime, 
+but with the introduction of generics in java5 many of the error are got at compile time itself.
+
+
+
