@@ -9,7 +9,7 @@ public class UserTest {
 		// will lead to a compile-time error as Staff doesn't have this method
 		// s.approveReview();
 		
-		// ((Editor) s).approveReview();
+		//((Editor) s).approveReview();
 		// will lead to a runtime error if a Staff is passed (ClassCastException)
 		
 		if (s instanceof Editor)
@@ -32,11 +32,13 @@ public class UserTest {
 		// editor.approveReview();
 		editor.postAReview();
 		editor.saveWebLink();
-		editor.editReview();
-		((Editor) editor).editReview();
-
 
 		ut.approveReview(new Staff());
 		ut.approveReview(new Editor());
+		
+		//method binding
+		User s = new Editor();
+		//s.staticMethod();	//early binding
+		((Staff) s).staticMethod();
 	}
 }

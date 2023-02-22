@@ -510,7 +510,7 @@ Staff s = new Editor();
 s.approveReview();             // invalid
 ((Editor) s).approveReview();  // valid
 ```
--`instanceof` operator is used to check whether an object reference is indeed an instance of the class. Note that it is the object type, but not the reference type that matters. 
+- `instanceof` operator is used to check whether an object reference is indeed an instance of the class. Note that it is the object type, but not the reference type that matters. 
 Also the object referenced by the variable can be a subclass of the class specified on the right side, it doesn't have to be a direct instance.
 ```java
 User u = new User();
@@ -533,4 +533,21 @@ staff.approveReview()	//method doesn't include in staff class
 but with the introduction of generics in java5 many of the error are got at compile time itself.
 
 
+###### Day 23
 
+- Method Overriding Rules: 
+  - *Rule 1* : method parameters must be same and return type must be same as in the superclass method or must be a subclass.
+  - *Rule 2* : can't be less accessible means access level must be same or friendlier, e.g., we can't override a public method and make it private.
+- `super` keyword is used to access superclass method from subclass and is typically used for extending behavior defined in superclass.
+- super keyword can be used in two ways: to call the constructor of the superclass, and to call the method of the superclass.
+- `super` is related to objects so it can't be used inside a static method. 
+- `method binding` is the process of connecting a method call to the actual implementation of the method. There are two types of method binding:
+  - *static binding*: it occurs at compile time, where the compiler resolves the method call based on the declared type of the object.
+  - *dynamic binding*: it occurs at runtime, where the actual implementation of the method is determined based on the runtime type of the object.
+- static methods, final methods, fields i.e., both static and instance variables can't be overridden, only instance methods can be overidden.  
+- static methods can not be overridden since they are bounded at compile time and method overriding relies on dynamic binding at runtime. 
+If static methods are redefined by a derived class, then it is not Method Overriding but Method Hiding.  
+
+
+
+ 

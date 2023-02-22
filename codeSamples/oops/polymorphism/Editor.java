@@ -8,7 +8,5 @@ class Editor extends Staff {
 	void approveReview() {
 		System.out.println("Editor: approveReview");
 	}
-	static void editReview() {
-		System.out.println("Editor: editReview");
-	}
+	
 }

@@ -11,7 +11,8 @@ class User {
 	void postAReview() {
 		System.out.println("User: postAReview");
 	}
-	static void editReview() {
-		System.out.println("User: editReview");
+	//method binding
+	static void staticMethod(){
+		System.out.println("\nUser: staticMethod");
 	}
 }
