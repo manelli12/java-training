@@ -39,6 +39,6 @@ public class UserTest {
 		//method binding
 		User s = new Editor();
 		//s.staticMethod();	//early binding
-		((Staff) s).staticMethod();
+		//((Staff) s).staticMethod(); //for invoking Staff method
 	}
 }

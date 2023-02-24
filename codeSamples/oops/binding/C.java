@@ -1,4 +1,4 @@
-package binding.package1;
+
 
 class C {
 	public static void main(String[] args) {

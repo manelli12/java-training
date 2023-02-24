@@ -1,4 +1,4 @@
-package binding.package1;
+
 
 class B extends A {
 	static void StaticMethod() {

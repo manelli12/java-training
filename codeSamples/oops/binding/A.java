@@ -1,4 +1,4 @@
-package binding.package1;
+
 
 class A {
 	static void staticMethod() {

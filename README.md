@@ -1,4 +1,4 @@
-	## Learnings in Java ...
+## Learnings in Java ...
 ###### Day 01
 
 - **Interpreter**
@@ -541,6 +541,8 @@ but with the introduction of generics in java5 many of the error are got at comp
 - `super` keyword is used to access superclass method from subclass and is typically used for extending behavior defined in superclass.
 - super keyword can be used in two ways: to call the constructor of the superclass, and to call the method of the superclass.
 - `super` is related to objects so it can't be used inside a static method. 
+- the `super()` method can be used to explicitly to invoke a superclass's constructor, however it must be the first statement.
+- a constructor can have either `this()` or `super()` but not both.
 - `method binding` is the process of connecting a method call to the actual implementation of the method. There are two types of method binding:
   - *static binding*: it occurs at compile time, where the compiler resolves the method call based on the declared type of the object.
   - *dynamic binding*: it occurs at runtime, where the actual implementation of the method is determined based on the runtime type of the object.
@@ -549,5 +551,48 @@ but with the introduction of generics in java5 many of the error are got at comp
 If static methods are redefined by a derived class, then it is not Method Overriding but Method Hiding.  
 
 
+###### Day 24
 
- 
+- an `object class` is the parent class of all other classes. Every class in Java is directly or indirectly derived from the Object class. 
+This means that the `Object class` provides a set of methods and fields that are inherited by all classes in Java.
+- The Object class defines several important methods, such as:
+  - equals(): compares two objects for equality
+  - hashCode(): returns a hash code value for an object
+  - toString(): returns a string representation of an object
+  - getClass(): returns the class of an object
+  - finalize(): called by the garbage collector when an object is no longer needed
+  - clone() : Protected method, creates a new object with the same values as the original 
+- if we pass `this` to *System.out.println()* then it automatically invokes `toString()`. If the `toString()` method is overridden then it'll get invoked.
+- inherited methods might depend on superclass state that's why superclasses must be initialized first. This means that all the superclass constructors should run before the subclass constructor.
+This is acheived by constructor chaining, where a subclass implicitly calls the superclass constructor and this process goes on until Object class's constructor is invoked.
+- there are two ways to prevent inheritance:
+  - by making the class `final` (not extendible but instantiable e.g., *String* class)
+  - by making the constructor `private` (neither extendible nor instantiable e.g., *Math* class)
+- the reason why making the constructor private prevents inheritance is because the private access modifier makes the constructor private to the class and so it can not be invoked from the subclass 
+which means constructor chaining is not possible and hence the subclass can not be created. 
+
+
+###### Day 25
+
+- `abstract` class cannot be instantiated, but it can be used as a base class for other classes.
+- To declare an abstract class , the keyword `abstract` is used in the class declaration. 
+- Abstract classes may contain abstract methods, which are methods *without implementation* that are declared with the keyword `abstract`. Subclasses must provide an implementation for these abstract methods.
+```java
+abstract class Animal {
+    String name;
+    
+    public Animal(String name) {
+        this.name = name;
+    }
+    
+    public abstract void makeSound();
+}
+```
+- Any class that extends *Animal* must implement the *makeSound()* method.
+- abstract class also have `concrete` methods, which are methods with implementation. Subclasses can use these concrete methods without having to implement them again.
+- abstract class can also have a constructor, i.e., you can add a constructor. However, this constructor will ONLY be accessible from a subclass constructor as it is not possible to instantiate an abstract class.
+- if we do not include a constructor in an abstract class then compiler inserts a no-arg constructor implicitly just like in the case of a normal class.
+And this implicitly created constructor will also be invoked from the subclass as part of constructor chaining process and this constructor will in turn invoke the super class constructor, i.e., includes a super().
+- java does not support `multiple inheritance` as it could lead to a problem called *deadly daimond of death* i.e., 
+
+
