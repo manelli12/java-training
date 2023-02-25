@@ -593,6 +593,6 @@ abstract class Animal {
 - abstract class can also have a constructor, i.e., you can add a constructor. However, this constructor will ONLY be accessible from a subclass constructor as it is not possible to instantiate an abstract class.
 - if we do not include a constructor in an abstract class then compiler inserts a no-arg constructor implicitly just like in the case of a normal class.
 And this implicitly created constructor will also be invoked from the subclass as part of constructor chaining process and this constructor will in turn invoke the super class constructor, i.e., includes a super().
-- java does not support `multiple inheritance` as it could lead to a problem called *deadly daimond of death* i.e., 
+- java does not support `multiple inheritance` as it could lead to a problem called *deadly diamond of death* where a class inherits from two or more classes that have a common parent class with a conflicting method.
 
 
