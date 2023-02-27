@@ -596,3 +596,49 @@ And this implicitly created constructor will also be invoked from the subclass a
 - java does not support `multiple inheritance` as it could lead to a problem called *deadly diamond of death* where a class inherits from two or more classes that have a common parent class with a conflicting method.
 
 
+###### Day 26
+
+- an `interface` is a collection of abstract methods and constants.
+- prior to java8, it used to be only public abstract methods, but since java8 onwards an interface can also have concrete methods.
+- interfaces will not have any state i.e., they cannot have instance variables.
+- `interface` just states what methods it represents and does not say anything about the method implementation, that would be provided by subclasses of the interface.
+- Defining an interface:
+  - *public* & *abstract* by default
+  - variables are *public*, *static* & *final* by default
+  - All members are *public* by deafault
+  - Members can't be *private* & *protected* 
+```java
+interface MyInterface {
+    void method1();
+    int method2(String arg);
+    double PI = 3.14159;	//static final 
+}
+```
+-  From Java 9, interfaces can have *private* methods too just like in regular classes, i.e., these are concrete methods.
+- we can implement multiple interfaces but can only inherit one (as Java doesn't support Multiple Inheritance). Moreover an interface can have multiple subclasses from multiple packages.
+- interfaces are imported just like classes.
+- a class implementing an interface is a subtype of that interface due to which the following is possible:
+```java
+Interface obj = new MyClass();
+MyClass obj = new MyClass();
+Interface obj = new Interface();  // not possible
+```
+- an interface can only be a reference type and it can never be an object type.
+- prefer interface over abstract class. try to use an interface as a reference type
+in all kinds of variable declarations and also use them as method return types.
+```java
+void foo(ArrayList list) {
+    // we can invoke this method with an `ArrayList` only
+    // i.e., we can not pass another similar implementation
+}
+foo(new ArrayList());
+
+void bar(List list) {
+    // as `List` is an interface, we can pass any type which implements it
+}
+bar(new ArrayList());
+bar(new LinkedList());
+bar(new TreeList());
+```
+
+
