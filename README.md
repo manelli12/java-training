@@ -2,12 +2,37 @@
 
 <details>
 <summary>Days...</summary>
-<a href="#day-01">00</a> +
-<a href="#day-02">00</a> +
-<a href="#day-03">00</a> +
-<a href="#day-04">00</a> +
-<a href="#day-05">00</a> +
-<a href="#day-06">00</a> +
+<a href="#day-01">01</a> *
+<a href="#day-02">02</a> *
+<a href="#day-03">03</a> *
+<a href="#day-04">04</a> *
+<a href="#day-05">05</a> *
+<a href="#day-06">06</a> *
+<a href="#day-07">07</a> *
+<a href="#day-08">08</a> *
+<a href="#day-09">09</a> *
+<a href="#day-10">10</a> *
+<a href="#day-11">11</a> *
+<a href="#day-12">12</a> *
+<a href="#day-13">13</a> *
+<a href="#day-14">14</a> *
+<a href="#day-15">15</a> *
+<a href="#day-16">16</a> *
+<a href="#day-17">17</a> *
+<a href="#day-18">18</a> *
+<a href="#day-19">19</a> *
+<a href="#day-20">20</a> *
+<a href="#day-21">21</a> *
+<a href="#day-22">22</a> *
+<a href="#day-23">23</a> *
+<a href="#day-24">24</a> *
+<a href="#day-25">25</a> *
+<a href="#day-26">26</a> *
+<a href="#day-27">27</a> *
+<a href="#day-28">28</a> *
+<a href="#day-29">29</a> *
+
+
 </details>
 
 
@@ -44,7 +69,7 @@
   - `Java Micro Edition(ME)` Applicaion for Resource-Constrained Devices. Uses subset of Java SE.
   
   
-###### Day 03
+###### Day 03 [^](#learnings-in-java- "Back to Top")
   
 - `Variables` is like a container used to store values. A `Variable` is a named storage location in memory, stored Values can be changed during Program Execution.
    it has `Type` that determines what kind of Values they can store. An `Identifier`(name) that is used to access the values stored in Variable.
@@ -57,7 +82,7 @@
 -`static variables`: There would be one copy of each class variable per class, regardless of how many objects are created from it.
 
 
-###### Day 04
+###### Day 04 [^](#learnings-in-java- "Back to Top")
 
 - there are no byte or short literals but only `int` and `long` literals.  
  We can make a literal `long` by appending `L` or `l`.
@@ -74,7 +99,7 @@ BigDeciaml b = new BigDeciaml("0.3");
 - `characters` it can be assigned with unique value (\u0042) i.e., `code unit`. we can find different characters in `unicode-table`.
 
 
-###### Day 05
+###### Day 05 [^](#learnings-in-java- "Back to Top")
 
 - `Type Casting`: Assigns variables or literals of one type to another type 
   - implicit casting: smaller to larger data type i.e., widening conversion. Integer to Floating-point is implicit.
@@ -98,7 +123,7 @@ System.out.println("last number:" + numbers[5]);
 ```
 
 
-###### Day 06
+###### Day 06 [^](#learnings-in-java- "Back to Top")
 
 - like declaration of variables of other types, an `array` declaration has two components: the array's type and array's name. An `array's type` is written as `type[]`,
   where `type` is the data type of the contained elements, brackets indicate that varaibale holds an `array`. Size of the array is not part of it's `type`.
@@ -127,7 +152,7 @@ String[] destination = java.util.Arrays.copyOfRange(copyFrom,0,1);
 - `Java SE` provides several methods for performing array manipulations such as copying, sorting and searching arrays.
 
 
-###### Day 07
+###### Day 07 [^](#learnings-in-java- "Back to Top")
 
 - `2D arrays` are stored as arrays of arrays. Therefore, the way 2D arrays are declared is similar 1D array objects. 2D arrays are declared by defining a data type followed by two sets of square brackets.
 - `initializer lists` can be used to quickly give initial values to `2D arrays`. This can be done in two different ways.
@@ -159,7 +184,7 @@ instead using a `StringBuilder` or `StringBuffer` will be more efficient.
 - `methods` define behaviour of an object. By using `methods` we can avoid `code duplication` and we can `re-use` software .
     
 
-###### Day 08
+###### Day 08 [^](#learnings-in-java- "Back to Top")
 
 - let's say if we want to pass an `array` list in a function it gives `illegal start of expression` its not going to work. That's because this kind of simplest notation which we have for creating
 a `arrays`, is valid only in `declaration` statements, but we cannot use it when `invoking` a particular `method`.
@@ -176,7 +201,7 @@ within same class, then we'll get a compiler error. Similary we can't invoke ins
 - `static` stuff is `global`, which is accessible across all of the objects. So from `instance methods` you can access `static` variables or methods.
 
 
-###### Day 09
+###### Day 09 [^](#learnings-in-java- "Back to Top")
 
 - we use `pass by value` only in java. There are two ways to pass the data.
   - `primitive` argument i.e., if we can pass directly the type and variable name as a parameter, here the argument variable value is copied as a parameter. 
@@ -215,7 +240,7 @@ method(true,1,2,3) //comma-separated arguments
 - if class includes the constructor in that case, the compiler will not insert the `default constructor`.
 
 
-###### Day 10
+###### Day 10 [^](#learnings-in-java- "Back to Top")
 
 - main purpose of the `constructor` is to initialize the state of an object. It does'nt have a return type, It can have varargs parameter.
 - local variable always shadows the instance variable if they represent with same name. so we use `this` keyword refers to the current instance of the class. It is used to refer to the members of the current object from within the object's methods or constructors.
@@ -224,7 +249,7 @@ method(true,1,2,3) //comma-separated arguments
 - we can't have more than one `this()` per constructor.	
 
 
-###### Day 11
+###### Day 11 [^](#learnings-in-java- "Back to Top")
 
 - `Arithmetic` operator applies to only primitive numberic types.
 - Shorthand operators : 
@@ -253,7 +278,7 @@ System.out.println("a != true: " + (a != true)); //false
 ```
 	
 
-###### Day 12
+###### Day 12 [^](#learnings-in-java- "Back to Top")
 
 - All of the `logical operators`(&&,||,!) require the data type of boolean.
 ```java
@@ -287,7 +312,7 @@ if(obj != null && obj.id == 10)
 ```	
 
 
-###### Day 13
+###### Day 13 [^](#learnings-in-java- "Back to Top")
 
 - `switch` can take an enum or an `integer (byte, short, char, int)` expression or a corresponding wrapper class. At runtime when the variable is evaluated, the primitive value will be unwrapped and will be compared with the case labels.
 - switch expression can also be a `String` (from Java 7 onwards).
@@ -303,7 +328,7 @@ if(obj != null && obj.id == 10)
 - ternary expression cannot be used as an expression statement.
 
 
-###### Day 14
+###### Day 14 [^](#learnings-in-java- "Back to Top")
 
 - *infinite loop* can be achived by `while loop` .
 ```java
@@ -326,7 +351,7 @@ label:
 - So this process of re invoking itself and the method executing again can happen for a certain number of times until a condition is met in one of the executions of the method.
 
 
-###### Day 15
+###### Day 15 [^](#learnings-in-java- "Back to Top")
 
 - if we want to access a *class* from another package then it should have the `public` access modifier, not required if we are accessing it from the same package.
 - there are four access modifiers:
@@ -348,7 +373,7 @@ System.out.println(x);
 - for using Scanner we need to import util package.
 
 
-###### Day 16  
+###### Day 16   [^](#learnings-in-java- "Back to Top")
 
 
 - the *string pool* is a memory area in the heap where the JVM stores all string literals. When we create a string literal, the JVM first checks the string pool to see 
@@ -393,7 +418,7 @@ String str3 = String.valueOf(myChar);
 ```
 
 
-###### Day 17
+###### Day 17 [^](#learnings-in-java- "Back to Top")
 
 - Java provides a way to share `String objects` that have the *same content* by using the `intern()` method.
 - When you call the `intern()` method on a `String object`, Java checks if a String object with the same content is already stored in the pool of `interned String objects`, which is a special area of the heap 
@@ -412,7 +437,7 @@ As a result, str1 and str2 reference the same object in the heap.
 - string object is immutable, a string reference however can be re-assigned as manytimes as we want.
 
 
-###### Day 18
+###### Day 18 [^](#learnings-in-java- "Back to Top")
 
 - classes can only have `public` or `default` access specifiers. 
 - all the methods in java.lang.Math are static.
@@ -447,7 +472,7 @@ When a final variable is declared as a local variable, it must be initialized be
 - `constant` variables must be initialized in the same line of declaration statement.
 
 
-###### Day 19
+###### Day 19 [^](#learnings-in-java- "Back to Top")
 
 - documentation comments use `/** ...*/` uses something similar to block course but here it uses two asterisks . they are generally referred to as javadoc comments.
 - prior to Java 5 one had to manually create a boxed primitive by invoking either it's constructor or by `valueOf` method. But in Java 5 a feature called `auto-boxing` was introduced, meaning the compiler can automatically box a primitive if needed.
@@ -477,7 +502,7 @@ int j = 4 * i;
 - `<`, `>`, `>=` and `<=` on boxed primitives will lead to `auto-unboxing` but in case of `==` and `!=` the *addresses* will be compared.
 
 
-###### Day 20
+###### Day 20 [^](#learnings-in-java- "Back to Top")
 
 - sub class can access members of super class, but super class can never access members of subclass.
 - inheriting of members applies to only non-private members of superclass.
@@ -497,7 +522,7 @@ class E extends B{} //error
 - whereas `default` members can be accessed by subclasses that are in the same *package*.
 
 
-###### Day 21
+###### Day 21 [^](#learnings-in-java- "Back to Top")
 
 - is-a test is a fundamental test that can be used to check inheritance relationship. If it is failing then inheritance relation should not be applied.
 - with `polymorphism`, a supertype can be assigned any of it's subtypes. It means that the type of object reference and the actual object referenced can be different,
@@ -513,7 +538,7 @@ user.approveReview()	//compiler error as User doesn't have this method
 starting from the object type and moving upwards in the tree.
 
 
-###### Day 22
+###### Day 22 [^](#learnings-in-java- "Back to Top")
 
 - once implicit casting on an inherited class is done, we can only invoke those subclass methods which are also defined in the super-class but sub-class specific methods become invalid. 
 To address this we need to use explicit casting.
@@ -545,7 +570,7 @@ staff.approveReview()	//method doesn't include in staff class
 but with the introduction of generics in java5 many of the error are got at compile time itself.
 
 
-###### Day 23
+###### Day 23 [^](#learnings-in-java- "Back to Top")
 
 - Method Overriding Rules: 
   - *Rule 1* : method parameters must be same and return type must be same as in the superclass method or must be a subclass.
@@ -563,7 +588,7 @@ but with the introduction of generics in java5 many of the error are got at comp
 If static methods are redefined by a derived class, then it is not Method Overriding but Method Hiding.  
 
 
-###### Day 24
+###### Day 24 [^](#learnings-in-java- "Back to Top")
 
 - an `object class` is the parent class of all other classes. Every class in Java is directly or indirectly derived from the Object class. 
 This means that the `Object class` provides a set of methods and fields that are inherited by all classes in Java.
@@ -584,7 +609,7 @@ This is acheived by constructor chaining, where a subclass implicitly calls the 
 which means constructor chaining is not possible and hence the subclass can not be created. 
 
 
-###### Day 25
+###### Day 25 [^](#learnings-in-java- "Back to Top")
 
 - `abstract` class cannot be instantiated, but it can be used as a base class for other classes.
 - To declare an abstract class , the keyword `abstract` is used in the class declaration. 
@@ -608,7 +633,7 @@ And this implicitly created constructor will also be invoked from the subclass a
 - java does not support `multiple inheritance` as it could lead to a problem called *deadly diamond of death* where a class inherits from two or more classes that have a common parent class with a conflicting method.
 
 
-###### Day 26
+###### Day 26 [^](#learnings-in-java- "Back to Top")
 
 - an `interface` is a collection of abstract methods and constants.
 - prior to java8, it used to be only public abstract methods, but since java8 onwards an interface can also have concrete methods.
@@ -654,7 +679,7 @@ bar(new TreeList());
 ```
 
 
-###### Day 27
+###### Day 27 [^](#learnings-in-java- "Back to Top")
 
 - `Marker interfaces` does not have any methods i.e., they have empty body. They are mainly used to mark or tag a class having certain property.
 some example marker interfaces in the java API:
