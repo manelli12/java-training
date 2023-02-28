@@ -8,5 +8,10 @@ public class Test {
 	   c.foo();
 	   c.bar();
 	   c.foobar();
+	   
+	   C clone = ((X)c).clone();
+	   if(clone != c){
+		System.out.println("\nClone Created..");
+	   }
    }
 }

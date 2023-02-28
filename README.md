@@ -1,5 +1,17 @@
 ## Learnings in Java ...
-###### Day 01
+
+<details>
+<summary>Days...</summary>
+<a href="#day-01">00</a> +
+<a href="#day-02">00</a> +
+<a href="#day-03">00</a> +
+<a href="#day-04">00</a> +
+<a href="#day-05">00</a> +
+<a href="#day-06">00</a> +
+</details>
+
+
+###### Day 01 [^](#learnings-in-java- "Back to Top")
 
 - **Interpreter**
   - `Fetch` next program Statement
@@ -14,7 +26,7 @@
   - if we want to run another program then we can execute it separetly.
   
   
-###### Day 02
+###### Day 02 [^](#learnings-in-java- "Back to Top")
 
 - `Git` learned about git and installed git, created `git-hub` account
   learned few commands as well firstly we need to create an empty repository using `git init` this will initialize an empty repository.
@@ -640,5 +652,34 @@ bar(new ArrayList());
 bar(new LinkedList());
 bar(new TreeList());
 ```
+
+
+###### Day 27
+
+- `Marker interfaces` does not have any methods i.e., they have empty body. They are mainly used to mark or tag a class having certain property.
+some example marker interfaces in the java API:
+  - *java.util.RandomAccess* : any class implementing this interface declares that it allows fast, random access of its elements, ArrayList is one class that implements this interface.
+  - *java.io.Serializable* : this interface declares that it allows its objects to be serialized, which means that the objects can be converted into byte streams, which can be saved to a file or transmitted over a network. 
+    This process is useful for saving the state of an object and for transferring objects between different applications or systems.
+  - *java.lang.Cloneable* : by implementing this interface a class declares that its objects can return their clones i.e., a duplicate object having the same state as the original.	
+- to use the `clone()` method, a class must implement the `Cloneable` interface. If a class attempts to call `clone()` on an object that does not implement Cloneable, a CloneNotSupportedException will be thrown at runtime.
+- the clone() method performs a shallow copy, which means it creates a new object with the same contents as the original object, but the contents themselves are not cloned.
+ Instead, the new object contains references to the same objects as the original. Therefore, any changes made to the objects referred to by the new object will also affect the original object and vice versa.  
+- the `default` keyword is used in interfaces to define a default implementation for a method (from Java 8 onwards). 
+The method can be called from any class that implements the interface, but can be overridden by any implementing class if necessary. Also, these are instance methods.
+- it's an interface method with the default implementation and the subclass can provide a more specific implementation. which means `default` methods can never be `final`.
+- below are few benefits of default methods:
+  - interface evolution (main purpose)
+  - default implementation can be overridden
+  - Eliminate Utility classes (is the class in Java package)(e.g., list.sort() instead of Collection.sort(List))
+  - allow interface to stay as functional interface (an interface with exactly one abstract method)
+- From Java9 onwards, interfaces can have private methods. A private method can be a static method or a non-default instance method. 
+- unlike static methods in classes, static methods in interfaces are not inherited.
+- unlike classes, static methods in interfaces can only be invoked via interface name but not from an object reference. 
+
+
+
+
+
 
 
