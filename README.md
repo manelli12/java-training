@@ -2,35 +2,35 @@
 
 <details>
 <summary>Days...</summary>
-<a href="#day-01">01</a> *
-<a href="#day-02">02</a> *
-<a href="#day-03">03</a> *
-<a href="#day-04">04</a> *
-<a href="#day-05">05</a> *
-<a href="#day-06">06</a> *
-<a href="#day-07">07</a> *
-<a href="#day-08">08</a> *
-<a href="#day-09">09</a> *
-<a href="#day-10">10</a> *
-<a href="#day-11">11</a> *
-<a href="#day-12">12</a> *
-<a href="#day-13">13</a> *
-<a href="#day-14">14</a> *
-<a href="#day-15">15</a> *
-<a href="#day-16">16</a> *
-<a href="#day-17">17</a> *
-<a href="#day-18">18</a> *
-<a href="#day-19">19</a> *
-<a href="#day-20">20</a> *
-<a href="#day-21">21</a> *
-<a href="#day-22">22</a> *
-<a href="#day-23">23</a> *
-<a href="#day-24">24</a> *
-<a href="#day-25">25</a> *
-<a href="#day-26">26</a> *
-<a href="#day-27">27</a> *
-<a href="#day-28">28</a> *
-<a href="#day-29">29</a> *
+<a href="#day-01-">01</a> *
+<a href="#day-02-">02</a> *
+<a href="#day-03-">03</a> *
+<a href="#day-04-">04</a> *
+<a href="#day-05-">05</a> *
+<a href="#day-06-">06</a> *
+<a href="#day-07-">07</a> *
+<a href="#day-08-">08</a> *
+<a href="#day-09-">09</a> *
+<a href="#day-10-">10</a> *
+<a href="#day-11-">11</a> *
+<a href="#day-12-">12</a> *
+<a href="#day-13-">13</a> *
+<a href="#day-14-">14</a> *
+<a href="#day-15-">15</a> *
+<a href="#day-16-">16</a> *
+<a href="#day-17-">17</a> *
+<a href="#day-18-">18</a> *
+<a href="#day-19-">19</a> *
+<a href="#day-20-">20</a> *
+<a href="#day-21-">21</a> *
+<a href="#day-22-">22</a> *
+<a href="#day-23-">23</a> *
+<a href="#day-24-">24</a> *
+<a href="#day-25-">25</a> *
+<a href="#day-26-">26</a> *
+<a href="#day-27-">27</a> *
+<a href="#day-28-">28</a> *
+<a href="#day-29-">29</a> *
 
 
 </details>
