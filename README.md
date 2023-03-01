@@ -703,8 +703,54 @@ The method can be called from any class that implements the interface, but can b
 - unlike classes, static methods in interfaces can only be invoked via interface name but not from an object reference. 
 
 
+###### Day 28 [^](#learnings-in-java- "Back to Top")
+
+- an `exception` is simply an object of `java.lang.Throwable` or one of it's subclasses.
+- `java.lang.Throwable `is the super-class of all exception related classes.
+- `exception` is an object of class `throwable` that represent an unusual condition or *error* that occurs during the execution of a program. 
+Exception handling is the process of handling these exceptional conditions in a controlled and graceful manner, rather than allowing them to cause the program to 
+terminate or behave in an unpredictable manner.
+```java
+public class Example {
+    public static void main(String[] args) {
+        try {
+            // some code that may throw an exception
+            int x = 5 / 0;
+        } catch (ArithmeticException e) {
+            // handle the exception here
+            System.out.println("An arithmetic exception occurred: " + e.getMessage());
+        } finally {
+            // this block is executed whether or not an exception was thrown
+            System.out.println("This code always gets executed.");
+        }
+    }
+}
+```
+- In this *example*, the `try` block contains code that may throw an *ArithmeticException* (in this case, dividing by zero). If an exception is thrown, the program execution jumps to the `catch` block, 
+which handles the exception by printing an error message.
+- The `finally` block is optional and is executed whether or not an exception was thrown. This can be useful for cleaning up resources or performing other actions that must always be performed, 
+regardless of whether an exception occurred.
+- The `throws` keyword is followed by one or more exception classes, separated by commas.
+- The `throws` keyword is not used to actually throw an exception; it is only used to declare that a method may throw an exception of a certain type. To actually throw an exception, we use 
+the throw keyword followed by an instance of the exception class.
+```java
+import java.io.FileNotFoundException;
+
+void example() throws FileNotFoundException {
+    if (someCondition)
+        throw new FileNotFoundException();
+}
+```
+- To get the `left-justified` column, you need a percentage symbol, a minus symbol, the number of characters, and then the letter "s" (lowercase). So `%-15s` means fifteen characters left-justified.
+- Exception objects can be referenced polymorphically.
+```java
+void example() throws IOException, FileNotFoundException { ... }
+void example() throws IOException { ... }
+```
+- as FileNotFoundException is a subclass of IOException.
 
 
+###### Day 29 [^](#learnings-in-java- "Back to Top")
 
 
 
