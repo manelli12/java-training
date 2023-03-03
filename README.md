@@ -775,6 +775,7 @@ try {
             in.close();
     } catch (IOException e) { ... }
 }
+```
 - `try with resources` block is a feature introduced in *Java 7* that simplifies the process of working with resources that must be closed after use, such as files, streams, and database connections.
 - `java.lang.AutoClosable` is mainly used to automatically close resources and it provides a cleaner syntax then using *finally* for closing the resources
 - When working with *resources* that implement the `AutoCloseable` interface, it is best to use a `try-with-resources` block to ensure that the resources are properly closed. 
