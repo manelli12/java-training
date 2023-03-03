@@ -31,7 +31,7 @@
 <a href="#day-27-">27</a> *
 <a href="#day-28-">28</a> *
 <a href="#day-29-">29</a> *
-
+<a href="#day-30-">30</a> *
 
 </details>
 
@@ -752,5 +752,69 @@ void example() throws IOException { ... }
 
 ###### Day 29 [^](#learnings-in-java- "Back to Top")
 
+- exceptions are classified into two categories:
+  - `Checked exceptions`: These are exceptions that are checked at compile time. Any method that can potentially throw a checked exception must either handle the exception using a `try-catch` block,
+  or declare that it throws the exception using the `throws` keyword. Examples of checked exceptions include *IOException*, *SQLException*, and *ClassNotFoundException*.
+  - `Unchecked exceptions`: These are exceptions that are not checked at compile time. They typically indicate programming errors or other unexpected conditions that are not recoverable.
+  Examples of unchecked exceptions include *NullPointerException*, *ArrayIndexOutOfBoundsException*, and *ClassCastException*.
+- below are couple of rules when it comes to exceptions & method overriding:
+  - If the super class method does not declare an exception, then the overriding method in the subclass cannot declare a checked exception, but can declare an unchecked exception.
+  - If the super class method declares a *checked exception*, then the overriding method in the subclass can declare same exception or a subclass exception or no exception at all, but cannot declare parent exception.
+  - If the super class method declares an *unchecked exception*, then the overriding method can declare any unchecked exception or no exception at all, but cannot declare a checked exception.
+- before *Java 7*, resources such as file *I/O streams* had to be explicitly closed in a `finally` block. Below is a standard template of what was done before Java 7:
+```java
+FileInputStream in = null;
+try {
+    in = new FileInputStream(filename);
+    // read data
+} catch (FileNotFoundException e) {
+    ...
+} finally {
+    try {
+        if (in != null)
+            in.close();
+    } catch (IOException e) { ... }
+}
+- `try with resources` block is a feature introduced in *Java 7* that simplifies the process of working with resources that must be closed after use, such as files, streams, and database connections.
+- `java.lang.AutoClosable` is mainly used to automatically close resources and it provides a cleaner syntax then using *finally* for closing the resources
+- When working with *resources* that implement the `AutoCloseable` interface, it is best to use a `try-with-resources` block to ensure that the resources are properly closed. 
+The try-with-resources block automatically calls the `close()` method on the resources at the end of the block, regardless of whether an exception is thrown.
+- Here's an example of how to use a try-with-resources block to work with an AutoCloseable resource:
+```java
+try (FileInputStream in = new FileInputStream(filename);
+    FileOutputStream out = new FileOutputStream(filename)) {
+    // read data
+} catch (FileNotFoundException e) {
+    // handle the exception
+} catch (IOException e) {
+    ...
+}
+```
+- since the resource are being automatically closed, this particular feature is referred to as Automatic Resource Management i.e., `ARM`.
+- multiple resources can also be created within the `try` parenthesis and must be separated using `;`
+  - The resources are created sequentially, once the try-catch block is evaluated the resources are closed in the reverse order.
 
 
+###### Day 30 [^](#learnings-in-java- "Back to Top")  
+
+- use checked exceptions for recoverable conditions and runtime exceptions for programming errors.
+- `Exception translation` and `chaining` are techniques that can be used to provide more meaningful error messages and to help diagnose and fix issues in our code.
+- Exception translation involves catching an exception and throwing a new exception with a different type or message that is more appropriate for our application or library.
+ This can be useful if the original exception is too low-level or does not provide enough information for the caller to understand the problem.
+- Exception chaining involves creating a new exception and setting the original exception as the cause of the new exception. 
+This can be useful because it preserves the original stack trace and exception message, making it easier to diagnose and fix issues.
+- `exception chaining`, also known as exception wrapping, is a technique used to associate one exception with another. It is a way to provide additional context about an exception and its cause.
+ It is useful when an exception occurs deep within the call stack, but the root cause of the problem may be higher up in the stack. By wrapping the original exception with another one, we can pass 
+ the original exception up the call stack while providing more context about what caused it.
+- to chain exceptions, we can pass the original exception to the constructor of a new exception. This new exception becomes the "wrapper" exception, and the original exception becomes its cause. 
+We can then throw the wrapper exception, which includes information about both the original exception and the reason why it occurred.
+- in this example, if an *FileNotFoundException* occurs, we wrap it in a new *RuntimeException* and pass the original exception as its cause. When the RuntimeException is thrown, it includes information 
+about the original exception and the reason why it occurred. This can be useful for debugging and troubleshooting issues in a system.
+```java
+try {
+	readFromFile("example.txt");
+} catch (FileNotFoundException e) {
+	// Wrap the original exception with a new exception
+	throw new RuntimeException("Error reading file", e);
+}  
+```	
