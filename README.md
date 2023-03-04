@@ -32,6 +32,7 @@
 <a href="#day-28-">28</a> *
 <a href="#day-29-">29</a> *
 <a href="#day-30-">30</a> *
+<a href="#day-31-">31</a> *
 
 </details>
 
@@ -819,3 +820,25 @@ try {
 	throw new RuntimeException("Error reading file", e);
 }  
 ```	
+
+
+###### Day 31 [^](#learnings-in-java- "Back to Top")
+
+- the `assert` keyword takes a boolean expression as an argument and throws an AssertionError if the expression evaluates to false. 
+If the expression is true, the program continues to execute normally.
+```java
+public int divide(int dividend, int divisor) {
+    assert divisor != 0 : "Divisor cannot be zero";
+    return dividend / divisor;
+}
+```
+- assert statements should not be used for program logic or error handling that are essential for the correct functioning of the program.
+ Instead, they should be used as a tool for testing and debugging during development.
+- assertions can be enabled or disabled (default) at class or package level by using `-ea/-enableassertions` or `-da/-disableassertions` flags respectively.
+- java comes with two sets of packages:
+  - java.io: Stream IO
+  - java.nio: New IO(introduced in Java4)
+- with in `Stream IO` there are two sets of packages:
+  1. `byte` strings under use for handling *binary data* such as images.
+  2. `character streams` under use for handling characters like Ex-Files under that exploit.
+  
