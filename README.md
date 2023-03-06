@@ -33,6 +33,9 @@
 <a href="#day-29-">29</a> *
 <a href="#day-30-">30</a> *
 <a href="#day-31-">31</a> *
+<a href="#day-32-">32</a> *
+<a href="#day-33-">33</a> *
+<a href="#day-34-">34</a> *
 
 </details>
 
@@ -841,4 +844,98 @@ public int divide(int dividend, int divisor) {
 - with in `Stream IO` there are two sets of packages:
   1. `byte` strings under use for handling *binary data* such as images.
   2. `character streams` under use for handling characters like Ex-Files under that exploit.
-  
+- `Endianness` refers to the way in which computer systems store multi-byte data types, such as integers and floating-point numbers, in memory. In a little-endian system, 
+the least significant byte of a multi-byte data type is stored at the lowest memory address, while in a big-endian system, the most significant byte is stored at the lowest memory address.   
+- the endianness of multi-byte data types is standardized and defined by the *Java Virtual Machine* Specification. The JVM specification requires that all Java Virtual Machines, regardless of the underlying hardware architecture,
+ must store multi-byte data types in memory using big-endian byte order.
+- This means that Java programs can rely on a consistent and predictable endianness across all platforms and architectures. Additionally, the Java programming language provides built-in methods 
+to convert between big-endian and little-endian byte order, which can be useful in situations where data needs to be transmitted or received in a different endianness than the platform's default.
+- Big Endian(BE) : MSB stored at *lowest* memory address.
+- Low Endian(LE) : MSB stored at *highest* memory address.
+- Byte Order Mark tells which endian to use i.e., for BE ~ FEFF and for LE ~ FFFE.
+
+
+###### Day 32 [^](#learnings-in-java- "Back to Top")
+
+- in stream IO reading and writing is handle by *streams* and a stream is basically a connection between a program and a data source or sink and is basically represented by a class and is also specific to type of source or sink.
+- if you want to read some data from a source then we would use an `input` stream. if we want to write some data to destination then we would use an `output` stream.
+- Streams classification:
+  - *Byte Streams* : to process non-character data like *images*
+  - *Character Streams* : to process character data like *text* classes that fall under characteristics are used.
+- `InputStream` is a Base `abstract` class for all *byte* input streams and it is used to *read* data in groups of 8-bit bytes
+```java
+abstract void read()throws IOException
+//read groups of bytes
+int read(byte[] b, int offset, int length) throws IOException
+//it is a concrete method
+```
+- `OutputStream` is a Base `abstract` class for all *byte* output stream and it is used to *write* data in groups of 8-bit bytes.  
+```java
+abstract void write(int) throws IOException 
+//write groups of bytes
+void write(byte[] b, int offset, int length) throws IOException
+```
+- `open-closed` principle says that classes should be open for extension but closed for modification.
+- `Reader` is a Base `abstract` class for all *character* input streams and is used to *read* 16-bit chat data in *UTF-16* format
+```java
+abstract int read(char[] cbuf, int off, int len) throws IOException
+```
+- `Writer` is base `abstract` class for all character *output* streams is used *write* 16-bit char data to a destination and destination may use diff char format.
+- *InputStreamReader* from bytes to characters while *OutputStreamWriter* would translate from characters to bytes, benefit of using these two classes is they are general purpose
+and more over we can set the character encoding of our choice.
+```java
+public InputStreamReader(InputStream in, String charsetName)
+public OutputStreamWriter(OutputStream out,String charsetName)
+```
+- an example, here we want to read context of *text file*. So we must create a file input stream object and then we pass it as an argument to input stream reader.
+and character encoding is specified as *UTF-8*
+```java
+FileInputStream in = new FileInputStream("go.txt");
+InputStreamReader reader= new InputStreamReader(in, "UTF-8");
+```
+- an example of using a buffered reader for reading a text file
+```java
+StrinBuilder text =new StringBuilder();
+
+try(BufferedReader in = newBufferedReader(new 
+	InputStreamReader(new FileInputStream("go.txt"),"UTF-8"))){
+	String line;
+	while((line = in.readLine()) != null){
+		text.append(line).append("\n");
+	}
+	}catch(IOException e){
+		e.printStackTrace();
+	}
+```
+- `readLine()` method reads a line of text from an input stream and returns it as a String object.	
+
+
+###### Day 33 [^](#learnings-in-java- "Back to Top")
+
+- `Serialization` is the process of converting an *object* into a stream of *bytes* that can be transmitted over a network or stored in a file or database. 
+`Deserialization` is the process of recreating the object from the serialized form.
+- process of `serialization` should implement marker `java.io.Serializable` and to do actual serialization and deserialization
+we use classes *ObjectOutputStream* and *ObjectInputStream` respectively .
+- Serialization example:
+```java
+//Serialization
+ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(
+	new FileOutputStream("object.ser")));
+out.writeObject("the current Date and Time is");
+out.writeObject(new Date());
+
+//Deserialization
+ObjectInputStream out = new ObjectInputStream(new BufferedInputStream(
+	new FileInputStream("object.ser")));
+String str = (String) in.readObject(); //downcast from object
+Date date = (Date) in.readObject();
+```
+- both *Primitives* and *Arrays* are serializable by deafault.
+- serialization saves the entire object graph i.e., if an object is serialized than any objects it references or any object those object reference will all be serialized.
+now if one object in object graph does not implement the serializable interface then serialization of the original object fails. Also within the object graph if the same object
+is referenced multiple times then serialization saves the object only once 
+- *Static* variables are *not* serializable becuase serialization is about *objects*. So during Deserialization a static variable will be assigned the value the class has at that particular instance of time.
+
+
+
+
