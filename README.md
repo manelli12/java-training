@@ -1030,7 +1030,8 @@ for (int element : list) {
     Iterator<T> iterator();
     default void forEach(Consumer<? super T> action) { ... }
     default Spliterator<T> spliterator() { ... }
-}```
+}
+```
 - ArrayList has a nested class which implements `java.util.Iterator`, an instance of that nested class is returned when iterator() is invoked.
 ```java
 public interface Iterator<E> {
