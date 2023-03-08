@@ -1,4 +1,4 @@
-package exceptions.assertions;
+package exception.assertions;
 
 public class B {
 

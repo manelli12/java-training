@@ -1,4 +1,4 @@
-package exceptions.assertions.p1;
+package exception.assertions.p1;
 
 public class C {
 

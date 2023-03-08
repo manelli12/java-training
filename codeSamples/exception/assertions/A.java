@@ -1,16 +1,16 @@
-package exceptions.assertions;
+package exception.assertions;
 
-import exceptions.assertions.p1.C;
+import exception.assertions.p1.C;
 
 public class A {
 
 	public static void main(String[] args ) {
 		A a = new A();
-		a.test(1);
+		a.test(2);
 	}
 
 	void test(int i) {
-		assert i > 0 : "invalid i in A.test";
+		assert i > 1 : "invalid i in A.test";
 
 		B b = new B();
 		b.test(1);

@@ -36,6 +36,9 @@
 <a href="#day-32-">32</a> *
 <a href="#day-33-">33</a> *
 <a href="#day-34-">34</a> *
+<a href="#day-35-">35</a> *
+<a href="#day-36-">36</a> *
+<a href="#day-37-">37</a> *
 
 </details>
 
@@ -935,6 +938,218 @@ Date date = (Date) in.readObject();
 now if one object in object graph does not implement the serializable interface then serialization of the original object fails. Also within the object graph if the same object
 is referenced multiple times then serialization saves the object only once 
 - *Static* variables are *not* serializable becuase serialization is about *objects*. So during Deserialization a static variable will be assigned the value the class has at that particular instance of time.
+
+
+###### Day 34 [^](#learnings-in-java- "Back to Top")
+
+- the Collections Framework can be divided into two parts (collections & map). All the implementations are `Serializable`, `Cloneable`, most allow `null` and none of them are Synchronized 
+i.e., they can be accessed by multiple threads at the same time.
+- `Collections` are classified as *List*, *Set*, *Queue*
+  -*List*: ArrayList, LinkedList
+  -*Set*: SortedSet ~ HashSet, TreeSet, LinkedHashSet
+  -*Queue*: Deque ~ ArrayDeque, LinkedList
+- *Maps*: SortedMap ~ HashMap, TreeMap, LinkedHashMap  
+- `Vector`, `Stack` and `Hashtable` are *legacy implementations* which support *synchronization*, however it is recommended to not use them anymore as synchronization slows things down,
+instead use `ArrayList`, `ArrayDeque` and `HashMap` respectively.
+- Collection has various sub-interfaces but it has only one direct sub-class i.e., `AbstractCollection` which provides the skeletal implementation of it.  
+- the `java.util.Collection` interface includes several methods common to all collections which can be broadly classified into 3 categories:
+  - 1.Basic Operations
+  - 2.Bulk Operations
+  - 3.Array Operations
+```java  
+public interface Collection<E> extends Iterable<E> {
+    // Basic Operations
+    boolean add(E element);                      // optional
+    boolean remove(Object element);              // optional
+    boolean contains(Object element);
+    int size();
+    boolean isEmpty();
+    Iterator<E> iterator();
+
+    // Bulk Operations
+    boolean addAll(Collection <? extends E> c);  // optional
+    boolean removeAll(Collection<?> c);          // optional
+    boolean retainAll(Collection<?> c);          // optional
+    boolean containsAll(Collection<?> c);
+    void clear();                                // optional
+
+    // Array Operations
+    Object[] toArray();
+    <T> T[] toArray(T[] a);
+    // e.g., String[] a = c.toArray(new String[0]);
+}
+// Note: "optional" means the subclass need not support it
+// i.e., it will define an empty method that will throw an UnsupportedOperationException.
+```
+- the `java.util.List` interface is useful when *sequence/positioning* matters. It models a resizable linear array with indexed access which can have duplicates.
+```java
+public interface List<E> extends Collection<E> {
+    // Positional Operations
+    E get(int index);
+    E set(int index, E element);                           // optional
+    void add(int index, E element);                        // optional
+    boolean add(E element);                                // optional
+    E remove(int index);                                   // optional
+    boolean addAll(int index, Collection<? extends E> c);  // optional
+
+    // Searching Operations
+    int indexOf(Object o);
+    int lastIndexOf(Object o);
+
+    // Iteration Operations
+    ListIterator<E> listiterator();
+    ListIterator<E> listiterator(int index);
+
+    // Range-view Operations
+    List<E> subList(int fromIndex, int toIndex);
+}
+```
+- `java.util.ArrayList` is an *array* implementation of the List interface and is resizable too.
+```java
+public class ArrayList<E> 
+extends AbstractList<E>
+implements List<E>, RandomAccess, Cloneable, java.io.Serializable
+```
+- the size of the internal array in `ArrayList` increases by 50% when it is full by default. This means that if the current capacity of the ArrayList is N, then the new capacity will be N + (N/2).
+ The capacity of an ArrayList can be increased by using the `ensureCapacity()` method, useful when adding a large number of elements as it may reduce the amount of incremental reallocation.
+- during iteration using a for-each loop, removing an element will lead to ConcurrentModificationException.
+```java
+for (int element : list) {
+    if (element == 9)
+        list.remove(9);
+}
+```
+
+
+###### Day 35 [^](#learnings-in-java- "Back to Top")
+
+- Collection extends `java.lang.Iterable` which enables any of its objects to be used in for-each loops. `Iterable` is an interface which has only one abstract method called `iterator()`, which the sub-class has to implement.
+ Internally for-each invokes this method to iterate the elements of the Collection.
+ ```java
+ public interface Iterable<T> {
+    Iterator<T> iterator();
+    default void forEach(Consumer<? super T> action) { ... }
+    default Spliterator<T> spliterator() { ... }
+}```
+- ArrayList has a nested class which implements `java.util.Iterator`, an instance of that nested class is returned when iterator() is invoked.
+```java
+public interface Iterator<E> {
+    boolean hasNext();
+    E next();
+    void remove();
+    default void forEachRemaining(Consumer<? super T> action) { ... }
+}
+```
+- It allows us to remove an element during iteration.
+```java
+Iterator<Integer> it = list.iterator();
+while (it.hasNext()) {
+    int element = it.next();
+    if (element == 9)
+        it.remove();
+}
+list.forEach(System.out::println);
+```
+- `ListIterator` extends Iterator and provides additional functionality. With Iterator we can only remove elements but with ListIterator we can additionally add and replace elements.
+ Moreover, we can both iterate both forwards as well as backwards.
+```java
+public interface ListIterator<E> extends Iterator<E> {
+    void add(E e);
+    void set(E e);
+    void remove();
+    boolean hasNext();
+    E next();
+    boolean hasPrevious();
+    E previous();
+    int nextIndex();
+    int previousIndex();
+}
+```
+- `java.util.LinkedList` is a doubly linked list implementation of List & Deque interfaces.
+```java
+public class LinkedList<E>
+extends AbstractSequentialList<E>
+implements List<E>, Deque<E>, Cloneable, Serializable
+```
+- `java.util.Queue` is a collection designed for holding elements prior to processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations.
+Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either null or false, depending on the operation).
+The latter form of the insert operation is designed specifically for use with capacity-restricted Queue implementations. (written in notes)
+- `java.util.Deque` is a linear collection that supports element insertion and removal at both ends.
+- when a *deque* is used as a *queue*, FIFO (First-In-First-Out) behavior results. Elements are *added* at the *end* of the deque and *removed* from the *beginning*.
+The methods inherited from the Queue interface are precisely equivalent to Deque methods as indicated by the following table:
+
+| Queue method  | Deque method   |
+| ------------- |:-------------: |
+| add(e)      	| addLast(e)     |
+| offer(e)     	| offerLast(e)   |
+| remove()      | removeFirst()  |
+| poll()        | pollFirst()    |
+| element()     | getFirst() 	 |
+| peek()        | peekFirst()    |
+
+- `Deques` can also be used as LIFO (Last-In-First-Out) stacks. This interface should be used in preference to the legacy Stack class. When a deque is used as a stack,
+ elements are pushed and popped from the beginning of the deque. Stack methods are precisely equivalent to Deque methods as indicated in the table below:
+ 
+| Stack Method  | Equivalent Deque Method |
+| ------------- |:-------------:          |
+| push(e)       | addFirst(e)             |
+| pop()         | removeFirst()           |
+| peek()        | peekFirst()             |
+
+- `java.util.ArrayDeque` is a resizable-array implementation of the Deque interface. Array deques have no capacity restrictions; they grow as necessary to support usage.
+```java
+public class ArrayDeque<E>
+extends AbstractCollection<E>
+implements Deque<E>, Cloneable, Serializable
+```
+- below are various ways to create an ArrayDeque:
+  - ArrayDeque()
+  - ArrayDeque(int)
+  - ArrayDeque(Collection)
+- *ArrayDeque* is faster than *LinkedList* as a queue.
+- unlike List, java.util.Set interface does not add any new methods on top of what it inherits from the Collection interface. However due to the fact that it does not allow duplicates,
+ it places some additional requirements on some of the inherited methods and also the constructors.
+- `java.util.HashSet` is a hash table based implementation of the `Set` interface. Internally, it uses a HashMap, but since HashSet stores only individual objects those objects will be stored as keys 
+while an empty object (an instance of the Object class) will be stored as a value. It allows one null value.
+
+
+###### Day 36 [^](#learnings-in-java- "Back to Top")
+
+- according to *Effective Java*, we should always override `hashCode()` when we override `equals()`. Only overriding hashCode() is not helpful from preventing a duplicate from getting added to a HashSet 
+and only overriding equals() doesn't mean both will end up in the same bucket.
+- for `null` keys, the `hashCode` is always 0.
+- `java.util.LinkedHashSet` is an implementation of the Set interface and it is similar to HashSet in that it stores elements in a hash table. However, LinkedHashSet also maintains a doubly linked list of the elements in insertion order. 
+This means that the order in which elements are added to the set is preserved, and it can be traversed in that order using the iterator.
+- `java.util.SortedSet` and `java.util.NavigableSet` define sets that are sorted in a specific order defined by a comparator or the natural ordering of elements.
+- the `SortedSet` interface provides additional methods that allow for accessing and manipulating elements based on their position in the set, such as `subSet()`, `headSet()`, and `tailSet()`.
+```java
+public interface SortedSet<E> extends set<E>{
+	//Range-view
+	SortedSet<E> subSet(E fromElement, E toElement);
+	SortedSet<E> headSet(E toElement);
+	SortedSet<E> tailSet(E fromElement);
+	
+	//EndPoints
+	E first();
+	E last();
+	
+	//Comparator access
+	Comparator<? super E> comparator();
+	default Spliterator<E> spliterator();
+}
+```
+- the `NavigableSet` interface extends the `SortedSet` interface and provides additional methods for navigating the set based on the ordering of the elements, such as `lower()`, `floor()`, `ceiling()`, and `higher()`. 
+These methods return elements that are strictly *less than*, *less than or equal to*, *greater than or equal to*, and *strictly greater* than a given element, respectively.
+- both `SortedSet` and `NavigableSet` are implemented by the `java.util.TreeSet` class, which uses a red-black tree to maintain the elements in sorted order. This allows for efficient operations on the set, such as finding 
+the smallest or largest element, or finding elements within a specific range.
+- the `java.lang.Comparable` interface is used to provide a default *natural sorting* order for a class. A class that implements the `Comparable` interface must implement `compareTo()`, which compares the current object 
+with the specified object and returns a negative integer, zero, or a positive integer if the current object is less than, equal to, or greater than the specified object, respectively.
+The `compareTo` method is used by sorting algorithms like `Arrays.sort()` and Collections.sort().
+- the `java.util.Comparator` interface is used to provide a custom sorting order for a class. A class that implements the `Comparator` interface must implement `compare()`, which compares two objects and 
+returns a negative integer, zero, or a positive integer if the first object is less than, equal to, or greater than the second object, respectively.
+The compare method is used as an argument to sorting algorithms like Arrays.sort() and Collections.sort() to provide a custom sorting order.
+- the difference between *Comparable* and *Comparator* is that `Comparable` provides a natural ordering of objects and is implemented by the object being sorted, whereas Comparator provides an 
+external ordering of objects and is implemented by a separate class
 
 
 
