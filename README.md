@@ -1153,5 +1153,57 @@ The compare method is used as an argument to sorting algorithms like Arrays.sort
 external ordering of objects and is implemented by a separate class
 
 
+###### Day 37 [^](#learnings-in-java- "Back to Top")
+
+- not all `Collection` classes come with a *skeletal/abstract* class which the corresponding Collection class extends. But all these abstract classes extend `java.util.AbstractCollection`.
+- the skeletal classes provided by Java are optional and can be used as a starting point for implementing a new collection class. However, many of the built-in collection classes do not extend the skeletal classes. 
+For example, *ArrayList* and *LinkedList* do not extend `AbstractList`, and *HashSet* and *LinkedHashSet* do not extend `AbstractSet`.
+- unlike Collection interface, `java.util.Map` interface does not extend the Iterable interface but the elements can still be iterated using `entrySet()`.
+```java
+public interface Map<K, V> {
+    // Basic Operations
+    V put(K key, V value);
+    V get(Object key);
+    V remove(Object key);
+    boolean containsKey(Object key);
+    boolean containsValue(Object value);
+    int size();
+    boolean isEmpty();
+
+    // Bulk Operations
+    void putAll(Map<? extends K, ? extends V> m);
+    void clear();
+
+    // Collection View Operations (can not invoke add/addAll but remove operations are possible)
+    Set<K> keySet();
+    Collection<V> values();
+    Set<Map.Entry<K,V>> entrySet();  // can be used for iterating the Map
+    public interface Entry {
+        K getKey();
+        V getValue();
+        V setValue(V value);
+    }
+}
+```
+- note that in case of `keySet()` a Set was returned whereas in case of `values()` a Collection is returned as there can be dupicate values.
+- `entrySet()` returns a set view of all the mappings in the Map, and each mapping is an instance of the nested interface Entry.
+- we should be careful when using mutable objects as keys, as any modification to key may lead to modification of the hashCode.
+ For example if we are using a List as a key, then if we modify the List then it's hashCode will also change. Below is AbstractList's `hashCode()` definition:
+```java
+public int hashCode() {
+    int hashCode = 1;
+    for (E e : this)
+        hashCode = 31 * hashCode + (e == null ? 0 : e.hashCode());
+    return hashCode;
+}
+```
+- similar to *LinkedHastSet*, `java.util.LinkedHashMap` preserves insertion order using a doubly linked list. It permits null and exactly one null key.
+- iteration speed of *LinkedHashSet/LinkedHashMap* is slightly faster than that of HashSet/HashMap. 
+- LinkedHashMap can be used as a LRU Cache.
+- `java.util.TreeMap` is a class that implements the SortedMap interface using red-black tree to store its elements. 
+The elements are sorted in ascending order based on their natural ordering of keys or a specified comparator. 
+It also implements the NavigableMap interface, which provides navigation methods for accessing the keys and values in a sorted map.
+
+
 
 
